@@ -1,0 +1,12 @@
+.products-header {
+  margin: 14px 0;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2rem;
+
+  &__right {
+    select {
+      margin-left: 10px;
+    }
+  }
+}

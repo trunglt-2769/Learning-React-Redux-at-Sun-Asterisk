@@ -1,0 +1,47 @@
+@import "../../sass/utilities/variables";
+@import "../../sass/utilities/mixins";
+
+.category {
+  @include fixed(0, null, 0, 0);
+  width: 214px;
+  overflow-y: scroll;
+  padding: 60px 14px 0;
+
+  &__result {
+    margin-top: 15px;
+  }
+
+  &__title {
+    margin: 0 0 8px;
+    color: $gray;
+    font-size: 1.4rem;
+  }
+
+  &__title-inner {
+    margin-top: 20px;
+    font-weight: 700;
+    font-size: 1.2rem;
+  }
+
+  ul {
+    li {
+      margin-top: 10px;
+      font-size: 1.2rem;
+      list-style-type: none;
+
+      input {
+        margin-right: 5px;
+      }
+
+      ul {
+        margin-left: 15px;
+      }
+    }
+  }
+
+  &__text {
+    padding-bottom: 10px;
+    font-size: 1rem;
+    text-align: center;
+  }
+}
