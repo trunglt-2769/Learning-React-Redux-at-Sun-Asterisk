@@ -1,33 +1,38 @@
 import React from "react";
 import "./ProductItem.scss";
+import PropTypes from "prop-types";
 
-function ProductItem(props) {
+ProductItem.propTypes = {
+  product: PropTypes.object,
+};
+
+function ProductItem({ product }) {
+  const RateProduct = (rating) => {
+    let stars = [];
+    for (let i = 0; i < rating; i++) {
+      stars.push(<i className="fa fa-star" key={i} />);
+    }
+    for (let i = 0; i < 5 - rating; i++) {
+      stars.push(<i className="far fa-star" key={5 - i} />);
+    }
+    return stars;
+  };
+
   return (
-    <article className="product-item">
-      <div className="product-item__img">
-        <img
-          src="https://cdn-demo.algolia.com/bestbuy-0118/5588602_sb.jpg"
-          alt="product-item"
-        />
-      </div>
-      <div className="product-item__content">
-        <div className="product-item__name">
-          Dell - Inspiron 15.6" Touch-Screen Laptop - Intel Core i5 - 6GB Memory
-          - 1TB Hard Drive - Black
+    <div className="col-12 col-md-6 col-xl-3 d-flex flex-column flex-lg-row align-items-stretch">
+      <article className="product-item">
+        <div className="product-item__img">
+          <img src={product.image} alt="product-item" />
         </div>
-        <div className="product-item__type"></div>
-        <div className="product-item__price">$499.99</div>
-        <div className="product-item__rating">
-          <span className="rating">
-            <i className="fa fa-star"></i>
-            <i className="fa fa-star"></i>
-            <i className="fa fa-star"></i>
-            <i className="fa fa-star"></i>
-            <i className="fa fa-star"></i>
-          </span>
+        <div className="product-item__content">
+          <div className="product-item__name">{product.name}</div>
+          <div className="product-item__price">${product.price}</div>
+          <div className="product-item__rating">
+            <span className="rating">{RateProduct(product.rating)}</span>
+          </div>
         </div>
-      </div>
-    </article>
+      </article>
+    </div>
   );
 }
 

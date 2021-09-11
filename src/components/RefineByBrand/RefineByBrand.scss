@@ -3,13 +3,16 @@
 
 .refine-by-brand {
   form {
+    white-space: nowrap;
+
     button[type="submit"] {
       @include relative;
       font-size: 1.2rem;
+      height: 28px;
       background-color: transparent;
       border-color: transparent;
       color: $blue;
-      margin-right: -22px;
+      margin-right: -28px;
       z-index: 2;
     }
 

@@ -1,37 +1,37 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import "./Pagination.scss";
+import ProductContext from "../../context/product-context";
+import ReactPaginate from "react-paginate";
 
-function Pagination(props) {
+function Pagination() {
+  const { pagination, handlePaginaion } = useContext(ProductContext);
+  const totalPage = Math.ceil(pagination._totalProducts / pagination._limit);
+
+  useEffect(() => {
+    console.log(pagination);
+  }, [pagination]);
+
   return (
-    <div className="pagination-block">
-      <nav aria-label="Product pagination">
-        <ul class="pagination justify-content-center">
-          <li class="page-item disabled">
-            <span class="page-link">Previous</span>
-          </li>
-          <li class="page-item active">
-            <a class="page-link" href="#!">
-              1
-            </a>
-          </li>
-          <li class="page-item" aria-current="page">
-            <a class="page-link" href="#!">
-              2
-            </a>
-          </li>
-          <li class="page-item">
-            <a class="page-link" href="#!">
-              3
-            </a>
-          </li>
-          <li class="page-item">
-            <a class="page-link" href="#!">
-              Next
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </div>
+    <ReactPaginate
+      previousLabel={"Previous"}
+      nextLabel={"Next"}
+      breakLabel={"..."}
+      pageCount={totalPage}
+      marginPagesDisplayed={3}
+      pageRangeDisplayed={4}
+      onPageChange={handlePaginaion}
+      containerClassName={"pagination justify-content-center"}
+      pageClassName={"page-item"}
+      pageLinkClassName={"page-link"}
+      previousClassName={"page-item"}
+      previousLinkClassName={"page-link"}
+      nextClassName={"page-item"}
+      nextLinkClassName={"page-link"}
+      breakClassName={"page-item"}
+      breakLinkClassName={"page-link"}
+      activeClassName={"active"}
+      forcePage={pagination._page && pagination._page - 1}
+    />
   );
 }
 

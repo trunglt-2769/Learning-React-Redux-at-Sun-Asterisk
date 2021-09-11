@@ -3,6 +3,7 @@
 
 .product-item {
   padding: 10px 20px 20px;
+  width: 100%;
   border-bottom: solid 1px #eee;
   margin-bottom: 14px;
   border: solid 1px #eee;
@@ -15,6 +16,7 @@
     img {
       height: 150px;
       max-width: 100%;
+      object-fit: contain;
     }
   }
 
@@ -39,7 +41,6 @@
     color: $black;
     font-size: 1.4rem;
     font-weight: bold;
-    letter-spacing: -1px;
   }
 
   &__rating {
