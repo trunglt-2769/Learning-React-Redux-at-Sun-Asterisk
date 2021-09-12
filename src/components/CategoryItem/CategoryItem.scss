@@ -1,0 +1,9 @@
+.category-item {
+  width: 100%;
+  cursor: pointer;
+  user-select: none;
+
+  & > a.active {
+    font-weight: bold;
+  }
+}

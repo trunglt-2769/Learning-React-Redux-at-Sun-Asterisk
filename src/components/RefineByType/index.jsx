@@ -1,34 +1,25 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import "./RefineByType.scss";
+import CheckBoxList from "../CheckBoxList/index.jsx";
+import { changeType } from "../../pages/Products/filters.slice";
 
 function RefineByType(props) {
+  const dispatch = useDispatch();
+  const { filters } = useSelector((state) => state.filters);
+  const { type } = useSelector((state) => state.categories);
+  const handleFilterType = (data) => {
+    dispatch(changeType({ type: data }));
+  };
+
   return (
-    <div>
-      <ul>
-        <li className="active">
-          <input type="checkbox" defaultChecked={true} />
-          <label>
-            <a href="#!">
-              Trend cases <span>(457)</span>
-            </a>
-          </label>
-        </li>
-        <li>
-          <input type="checkbox" />
-          <label>
-            <a href="#!">
-              Ult protection cases <span>(393)</span>
-            </a>
-          </label>
-        </li>
-        <li>
-          <input type="checkbox" />
-          <label>
-            <a href="#!">
-              Ink cartridges <span>(249)</span>
-            </a>
-          </label>
-        </li>
-      </ul>
+    <div className="refine-by-type">
+      <CheckBoxList
+        filter={filters.type}
+        handleChangeOption={handleFilterType}
+        name="brand"
+        optionList={type}
+      />
     </div>
   );
 }

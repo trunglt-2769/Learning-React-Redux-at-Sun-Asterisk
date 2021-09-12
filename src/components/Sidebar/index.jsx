@@ -1,37 +1,35 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import "./Sidebar.scss";
-import ClearFilterBtn from "../UI/Buttons/ClearFilterBtn";
-import Category from "../Category/index.jsx";
+import ClearFilterBtn from "../ClearFilterBtn/index.jsx";
+import Categories from "../Categories";
 import RefineByType from "../RefineByType/index.jsx";
 import RefineByBrand from "../RefineByBrand/index.jsx";
 import RefineByRatings from "../RefineByRatings/index.jsx";
 import RefineByPrices from "../RefineByPrices/index.jsx";
 
 function Sidebar() {
+  const { isClearFilter } = useSelector((state) => state.filters);
+
   return (
     <div className="category">
-      <ClearFilterBtn className="pt-5">
-        <button>
-          <i className="fa fa-eraser me-2"></i>Clear all filters
-        </button>
-      </ClearFilterBtn>
-
-      <div className="category__result">
-        <p className="category__title">Show results for</p>
-        <Category />
-      </div>
+      {!isClearFilter && <ClearFilterBtn />}
+      <section className="category__result">
+        <h4 className="category__title">Show results for</h4>
+        <Categories />
+      </section>
       <hr></hr>
-      <div className="category__refine">
-        <p className="category__title">Refine by</p>
-        <p className="category__title-inner">Type</p>
+      <section className="category__refine">
+        <h4 className="category__title">Refine by</h4>
+        <h5 className="category__title-inner">Type</h5>
         <RefineByType />
-        <p className="category__title-inner">Brand</p>
+        <h5 className="category__title-inner">Brand</h5>
         <RefineByBrand />
-        <p className="category__title-inner">Ratings</p>
+        <h5 className="category__title-inner">Ratings</h5>
         <RefineByRatings />
-        <p className="category__title-inner">Prices</p>
+        <h5 className="category__title-inner">Prices</h5>
         <RefineByPrices />
-      </div>
+      </section>
       <hr></hr>
       <div className="category__text">Data courtesy of Best Buy</div>
     </div>

@@ -26,27 +26,30 @@
   }
 
   &__search {
-    display: flex;
-    width: 350px;
-    height: 30px;
     margin-left: 16px;
 
-    input {
-      flex-grow: 1;
-      padding: 6px 12px;
-      border-top-left-radius: 5px;
-      border-bottom-left-radius: 5px;
-      border-color: transparent;
-    }
+    form {
+      display: flex;
+      width: 350px;
+      height: 30px;
+      input {
+        padding: 6px 12px;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+        border-color: transparent;
+        flex-grow: 1;
+      }
 
-    button {
-      border-top-right-radius: 5px;
-      border-bottom-right-radius: 5px;
-      border-color: transparent;
+      button {
+        font-size: 1.4rem;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        border-color: transparent;
+        background-color: $primary-color;
 
-      background-color: $primary-color;
-      i {
-        padding: 0 30px;
+        i {
+          padding: 6px 26px;
+        }
       }
     }
   }
